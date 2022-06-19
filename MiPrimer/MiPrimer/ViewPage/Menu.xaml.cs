@@ -21,6 +21,7 @@ namespace MiPrimer.ViewPage
             listamenu = new List<MenuCLS>();
             listamenu.Add(new MenuCLS { nombreicono = "ic_category", nombreitem = "Categoria" });
             listamenu.Add(new MenuCLS { nombreicono = "ic_product", nombreitem = "Producto" });
+            listamenu.Add(new MenuCLS { nombreicono = "ic_cerrar", nombreitem = "Salir" });
 
             BindingContext = this;
         }
@@ -38,6 +39,10 @@ namespace MiPrimer.ViewPage
 
                 case "Producto": 
                     App.Navigate.PushAsync(new Producto());
+                    break;
+
+                case "Salir":
+                    App.Current.MainPage = new MainPage();
                     break;
 
             }

@@ -142,4 +142,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_product.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_agregar.png" />
+  </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@
     
     <ContentPage.Content>
         
-        <StackLayout>
+        <StackLayout Padding="15">
             <Label Text="Menu Principal" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"/>
             <ListView ItemsSource="{Binding listamenu}" Margin="10, 25" x:Name="lstMenu"
                       ItemSelected="lstMenu_ItemSelected">
@@ -25,7 +25,8 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
 
-                                <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                                <StackLayout Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"
+                                             Orientation="Horizontal">
                                     <Image Source="{Binding nombreicono}"/>
                                     <Label Text="{Binding nombreitem}"/>
 

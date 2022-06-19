@@ -14,6 +14,8 @@ namespace MiPrimer.ViewPage
     public partial class FormCategoria : ContentPage
     {
         public CategoriaCLS oCategoriaCLS { get; set; } = new CategoriaCLS();
+
+        //Recibimos parametros de Categoria.xaml
         public FormCategoria(CategoriaCLS obj)
         {
             InitializeComponent();
