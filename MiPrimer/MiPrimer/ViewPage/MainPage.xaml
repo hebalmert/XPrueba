@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             Title="Logueo"
+             BackgroundColor="Black"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiPrimer.MainPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="toolbarAgregar" Clicked="toolbarAgregar_Clicked" IconImageSource="ic_add.png"/>
+
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout>
+        <Label Text="Bienvenido a mi Primera APP" 
+               TextColor="White"
+               HorizontalTextAlignment="Center"
+               FontSize="20"
+               FontAttributes="Bold"
+               BackgroundColor="Tomato"
+               Margin="20, 10, 20 , 0"
+               Padding="25, 5, 25, 5"
+               TextDecorations="Underline"
+               CharacterSpacing="4"
+               TextTransform="Uppercase"/>
+
+        <Label TextType="Html"
+               Text="&lt;h4>Logueo o Regristrate para Ingresar &lt;/h4>"
+               TextColor="White"
+               />
+
+        <Label TextColor="White"
+               Text="Esta es una aplicacion hecha en: &#10;
+               -Xamarin &#10;
+               -SQL Server &#10;
+               -ASP . Net Core"      
+               />
+
+        <StackLayout Orientation="Horizontal">
+            <Label 
+               x:Name="lblTexto" 
+               TextColor="White"
+               Text="este es un curso de diseno en Xamarin desarrollado por Udemy con detalle en espanol"
+               LineBreakMode="TailTruncation"
+               VerticalOptions="Center"
+               />
+
+            <Button 
+                x:Name="btnVerMas"
+                Clicked="btnVerMas_Clicked"
+                BackgroundColor="Green"
+                Text="ver mas"
+                TextColor="White"
+                FontSize="10"
+                HeightRequest="35"
+            />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Image
+            Source="https://spng.subpng.com/20180927/aae/kisspng-xamarin-computer-icons-mobile-app-development-user-posts-wael-emara-5bad1c6a6d67c1.7063454115380716584481.jpg"
+            WidthRequest="100"
+            HeightRequest="100"
+            HorizontalOptions="CenterAndExpand"
+            />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Image
+            Source="https://spng.subpng.com/20180927/aae/kisspng-xamarin-computer-icons-mobile-app-development-user-posts-wael-emara-5bad1c6a6d67c1.7063454115380716584481.jpg"
+            WidthRequest="100"
+            HeightRequest="100"
+            HorizontalOptions="CenterAndExpand"
+            />
+        </StackLayout>
+
+        <Grid BindingContext="{Binding ousuariosCLS}">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" 
+                   Grid.ColumnSpan="2"
+                   Text="Sistema de Logueo"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+
+            <Label VerticalOptions="Center" Text="Usuario:" TextColor="White"
+                   Grid.Column="0" Grid.Row="1"/>
+            <Label VerticalOptions="Center" Text="Contrasena:" TextColor="White"
+                   Grid.Column="0" Grid.Row="2"/>
+            <Entry Text="{Binding nombreusuario}"
+                   Placeholder="Ingrese Usuario" PlaceholderColor="DarkGray" TextColor="White"
+                   FontSize="14"
+                   Grid.Column="1" Grid.Row="1"/>
+            <Entry Text="{Binding contra}" 
+                   Placeholder="Ingrese Contrasena" PlaceholderColor="DarkGray" TextColor="White"
+                   FontSize="14"
+                   Grid.Column="1" Grid.Row="2"
+                   IsPassword="True"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                         HeightRequest="10">
+                <Button Text="Ingresar" BackgroundColor="DarkGray" 
+                        x:Name="btbIngresar"
+                        Clicked="btbIngresar_Clicked"/>
+                <Button Text="Registrar" BackgroundColor="DarkGray"
+                        x:Name="btbRegistrar"
+                        Clicked="btbRegistrar_Clicked"/>
+            </StackLayout>
+        </Grid>
+        
+        
+    </StackLayout>
+
+</ContentPage>

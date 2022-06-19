@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiPrimer.ViewPage.RegistroUsuarios">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Label Text="Registro Usuarios"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+                <BoxView HeightRequest="2" BackgroundColor="DarkBlue"/>
+
+                <Grid Margin="15,15,15,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Text="Nombre" VerticalOptions="Center" />
+                    <Entry x:Name="txtnombre" Grid.Column="1" Keyboard="Text" Grid.Row="0"  />
+                    <Label Grid.Column="0" Grid.Row="1" Text="Primer Apellido" VerticalOptions="Center" />
+                    <Entry x:Name="txtPrimerApellido" Grid.Column="1" Keyboard="Text" Grid.Row="1"  />
+                    <Label Grid.Column="0" Grid.Row="2" Text="Segundo Apellido" VerticalOptions="Center" />
+                    <Entry x:Name="txtSegundoApellido" Grid.Column="1" Keyboard="Text" Grid.Row="2"  />
+                    <Label Grid.Column="0" Grid.Row="3" Text="Telefono" VerticalOptions="Center" />
+                    <Entry x:Name="txtTelefono" Grid.Column="1" Keyboard="Telephone" Grid.Row="3" MaxLength="15"/>
+                    <Label Grid.Column="0" Grid.Row="4" Text="Email" VerticalOptions="Center" />
+                    <Entry x:Name="txtEmail" Grid.Column="1" Keyboard="Email" Grid.Row="4"/>
+                    <Label Grid.Column="0" Grid.Row="5" Text="Detalle" VerticalOptions="Center" />
+                    <Editor x:Name="txtDetalles" Grid.Column="1" Keyboard="Text" Grid.Row="5" MaxLength="100"/>
+                    <Label Grid.Column="0" Grid.Row="6" Text="Nacimiento" VerticalOptions="Center" />
+                    <DatePicker x:Name="txtNacimiento" Grid.Column="1" Grid.Row="6" Format="dd/MM/yyyy"
+                            MinimumDate="01/01/1950"
+                            MaximumDate="01/01/2025"/>
+                    <Label Grid.Column="0" Grid.Row="7" Text="Sexo" VerticalOptions="Center" />
+                    
+                    <StackLayout Grid.Column="1" Grid.Row="7">
+                        <RadioButton Content="Masculino" x:Name="rbMasculino"/>
+                        <RadioButton Content="Femenino" x:Name="rbFemenino"/>
+
+                    </StackLayout>
+
+                    <Label Grid.Column="0" Grid.Row="8" Text="Usuario" VerticalOptions="Center" />
+                    <Entry x:Name="txtUsuario" Grid.Column="1" Keyboard="Email" Grid.Row="8"/>
+                    <Label Grid.Column="0" Grid.Row="9" Text="Contrasena" VerticalOptions="Center" />
+                    <Entry x:Name="txtPassword" Grid.Column="1" IsPassword="True" Grid.Row="9"/>
+
+                </Grid>
+
+                <StackLayout Margin="5" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" HeightRequest="40">
+                    <Button x:Name="btnRegistrarUsuarios" Clicked="btnRegistrarUsuarios_Clicked" CornerRadius="10" FontSize="12" FontAttributes="Bold" Text="Registrar" BackgroundColor="DarkBlue" TextColor="White"/>
+                    <Button x:Name="volverLogin" Clicked="volverLogin_Clicked" CornerRadius="10" FontSize="12" FontAttributes="Bold" Text="Volver" BackgroundColor="Green" TextColor="White"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

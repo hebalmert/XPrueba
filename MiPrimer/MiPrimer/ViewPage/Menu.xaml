@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiPrimer.ViewPage.Menu"
+             Title="Pagina Menu">
+    
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Label Text="Menu Principal" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"/>
+            <ListView ItemsSource="{Binding listamenu}" Margin="10, 25" x:Name="lstMenu"
+                      ItemSelected="lstMenu_ItemSelected">
+                
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                                    <Image Source="{Binding nombreicono}"/>
+                                    <Label Text="{Binding nombreitem}"/>
+
+                                </StackLayout>
+                                
+                                
+                            </Grid>
+                            
+                        </ViewCell>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
