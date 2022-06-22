@@ -44,8 +44,9 @@ namespace MiPrimer.ViewPage
                 case "Salir":
                     App.Current.MainPage = new MainPage();
                     break;
-
             }
+            //Para Cerrar el Menu una vez que se da Click
+            App.MenuApp.IsPresented = false;
 
 
             //DisplayAlert("Aviso", omenuCLS.nombreicono, "Cancelar");

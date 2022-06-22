@@ -52,5 +52,11 @@ namespace MiPrimer
                 DisplayAlert("Error", "Usuario o Contrasena Incorrecto", "Aceptar");
             }
         }
+
+        private void btbAsignar_Clicked(object sender, EventArgs e)
+        {
+            ousuariosCLS.nombreusuario = "hebalmert";
+            ousuariosCLS.contra = "123456";
+        }
     }
 }

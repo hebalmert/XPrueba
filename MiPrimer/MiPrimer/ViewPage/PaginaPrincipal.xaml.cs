@@ -18,6 +18,7 @@ namespace MiPrimer
         {
             InitializeComponent();
             App.Navigate = Navigation;
+            App.MenuApp = this; 
         }
     }
 }

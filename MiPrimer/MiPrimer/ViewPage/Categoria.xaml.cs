@@ -13,20 +13,26 @@ namespace MiPrimer.ViewPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Categoria : ContentPage
     {
+        public EnitiesCLS oEntitiesCLS { get; set; }
 
-        public List<CategoriaCLS> listaCategoria { get; set; }
+        //public List<CategoriaCLS> listaCategoria { get; set; }
+
+        public List<CategoriaCLS> lista; 
 
         public Categoria()
         {
             InitializeComponent();
-            listaCategoria = new List<CategoriaCLS>();
-            listaCategoria.Add(new CategoriaCLS { IdCategory = 1, 
+            oEntitiesCLS = new EnitiesCLS();
+            oEntitiesCLS.listaCategoria = new List<CategoriaCLS>();
+            oEntitiesCLS.listaCategoria.Add(new CategoriaCLS { IdCategory = 1, 
                 nombre="Gaseossa", 
                 descripcion="Para todos los gustos de y sabores"});
-            listaCategoria.Add(new CategoriaCLS { IdCategory = 2,
+            oEntitiesCLS.listaCategoria.Add(new CategoriaCLS { IdCategory = 2,
                 nombre = "Galletas", 
                 descripcion = "Hechas con mucha harina y para grandes y chicos" });
 
+            //Mantiene toda la data
+            lista = oEntitiesCLS.listaCategoria;
             // Para que el codigo Xaml conozca el valor de la propiedas listacategoria
             BindingContext = this;
         }
@@ -34,7 +40,41 @@ namespace MiPrimer.ViewPage
         private void lstCategoria_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             CategoriaCLS objCategoria = (CategoriaCLS)e.SelectedItem;
-            Navigation.PushAsync(new FormCategoria(objCategoria));
+            Navigation.PushAsync(new FormCategoria(objCategoria, "Editar Categoria"));
+        }
+
+        private void toolbarAgregar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FormCategoria(new CategoriaCLS(), "Nueva Categoria"));
+        }
+
+        private void menuEliminar_Clicked(object sender, EventArgs e)
+        {
+            //Se trae por medio del Sender del MenuItem el objeto
+            MenuItem oMenuItem = sender as MenuItem;
+
+            //ahora en una variable podemos el objeto completo para manejarlo
+            CategoriaCLS oCategoria = (CategoriaCLS)oMenuItem.BindingContext;
+            oEntitiesCLS.listaCategoria = oEntitiesCLS.listaCategoria
+                .Where(c => c.IdCategory != oCategoria.IdCategory).ToList();
+            DisplayAlert("Aviso", oCategoria.nombre, "Aceptar");
+        }
+
+        private void SearchCategoria_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string valor = e.NewTextValue;
+            if (valor == "")
+            {
+                oEntitiesCLS.listaCategoria = lista;
+            }
+            else
+            {
+                oEntitiesCLS.listaCategoria = lista.Where(p => p.nombre.Contains(valor)).ToList();
+            }
+
+
+
+            //DisplayAlert("Tipeado", valor , "Aceptar");
         }
     }
 }

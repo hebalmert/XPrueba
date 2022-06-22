@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiPrimer.Android", "MiPrime
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiPrimer.iOS", "MiPrimer\MiPrimer.iOS\MiPrimer.iOS.csproj", "{C4133D84-C35F-472D-9237-ADDA9B0CCCCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiPrimer", "MiPrimer\MiPrimer\MiPrimer.csproj", "{EF232FF2-B3A3-41C5-B247-25EDCC885A16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiPrimer", "MiPrimer\MiPrimer\MiPrimer.csproj", "{EF232FF2-B3A3-41C5-B247-25EDCC885A16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

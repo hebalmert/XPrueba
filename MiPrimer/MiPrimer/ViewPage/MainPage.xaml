@@ -116,8 +116,11 @@
                         Clicked="btbRegistrar_Clicked"/>
             </StackLayout>
         </Grid>
-        
-        
+
+        <Button Text="Asignar" BackgroundColor="DarkBlue" 
+                        x:Name="btbAsignar"
+                Clicked="btbAsignar_Clicked"/>
+
     </StackLayout>
 
 </ContentPage>

@@ -15,11 +15,14 @@ namespace MiPrimer.ViewPage
     {
         public CategoriaCLS oCategoriaCLS { get; set; } = new CategoriaCLS();
 
+        public string Titles { get; set; }
+
         //Recibimos parametros de Categoria.xaml
-        public FormCategoria(CategoriaCLS obj)
+        public FormCategoria(CategoriaCLS obj, string titulo)
         {
             InitializeComponent();
             oCategoriaCLS = obj;
+            Titles = titulo;
             BindingContext = this;
         }
     }
