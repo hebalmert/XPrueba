@@ -9,6 +9,7 @@ namespace MiPrimer.Clases
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        //Categoria
         public List<CategoriaCLS> _listaCategoria { get; set; }
 
         public List<CategoriaCLS> listaCategoria 
@@ -23,6 +24,25 @@ namespace MiPrimer.Clases
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.listaCategoria)));
                 }
             } 
+        }
+
+        //Producto
+        public List<ProductoCLS> _listaProducto { get; set; }
+
+        public List<ProductoCLS> listaProducto
+        {
+            get
+            {
+                return _listaProducto;
+            }
+            set
+            {
+                if (this._listaProducto != value)
+                {
+                    this._listaProducto = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.listaProducto)));
+                }
+            }
         }
     }
 }

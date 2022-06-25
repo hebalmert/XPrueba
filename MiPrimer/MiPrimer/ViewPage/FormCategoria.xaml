@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiPrimer.ViewPage.FormCategoria"
              Title="{Binding Titles}">
-    
+
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding oCategoriaCLS}">
             <Label Text="Id Categoria" />
@@ -11,7 +11,12 @@
             <Label Text="Nombre" />
             <Entry Text="{Binding nombre}"/>
             <Label Text="Descripcion" />
-            <Entry Text="{Binding descripcion}"/>
+            <Editor Text="{Binding descripcion}" HeightRequest="100"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Guardar" x:Name="btnGuardarCategoria" BackgroundColor="Green" Clicked="btnGuardarCategoria_Clicked" />
+                <Button Text="Guardar" x:Name="btnRegresarCategoria" Background="red" Clicked="btnRegresarCategoria_Clicked" />
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

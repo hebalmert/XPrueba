@@ -13,14 +13,34 @@ namespace MiPrimer.ViewPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Categoria : ContentPage
     {
+        //implementar paton Singlenton
+        public static Categoria instance;
+
         public EnitiesCLS oEntitiesCLS { get; set; }
 
         //public List<CategoriaCLS> listaCategoria { get; set; }
 
-        public List<CategoriaCLS> lista; 
+        public List<CategoriaCLS> lista;
+
+
+        //Creamos un metodo que nos devuelva la Instancia
+        public static Categoria GetInstance() 
+        {
+            if (instance == null)
+            {
+                return new Categoria();
+            }
+            else
+            { 
+                return instance;
+            }
+        }
+
 
         public Categoria()
         {
+            instance = this;
+
             InitializeComponent();
             oEntitiesCLS = new EnitiesCLS();
             oEntitiesCLS.listaCategoria = new List<CategoriaCLS>();

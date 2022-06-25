@@ -25,5 +25,30 @@ namespace MiPrimer.ViewPage
             Titles = titulo;
             BindingContext = this;
         }
+
+        private void btnGuardarCategoria_Clicked(object sender, EventArgs e)
+        {
+            Categoria obj = Categoria.GetInstance();
+            List<CategoriaCLS> l = obj.oEntitiesCLS.listaCategoria.ToList();
+            if (Title == "Nueva Categoria")
+            {
+                //Agregar
+                l.Add(oCategoriaCLS);
+               
+            }
+            else
+            {
+                //Editar
+                int indice = l.FindIndex(p => p.IdCategory == oCategoriaCLS.IdCategory);
+                l[indice] = oCategoriaCLS;
+            }
+            obj.oEntitiesCLS.listaCategoria = l;
+            Navigation.PopAsync();
+        }
+
+        private void btnRegresarCategoria_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }
