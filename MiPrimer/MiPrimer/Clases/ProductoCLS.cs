@@ -6,6 +6,8 @@ namespace MiPrimer.Clases
 {
     public class ProductoCLS
     {
+        public int IdProducto { get; set; }
+
         public string nombre { get; set; }
 
         public double precio { get; set; }

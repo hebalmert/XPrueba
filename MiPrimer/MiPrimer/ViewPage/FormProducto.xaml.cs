@@ -16,13 +16,14 @@ namespace MiPrimer.ViewPage
 
         public ProductoCLS oProductoCLS { get; set; }
 
+        public string titulo { get; set; }
         //fuent de datos
         public List<string> listacategoria { get; set; }
 
-        public FormProducto(ProductoCLS obj, string titulo)
+        public FormProducto(ProductoCLS obj, string nombretitulo)
         {
             InitializeComponent();
-            Title = titulo;
+            titulo = nombretitulo;
             listacategoria = new List<string>();
             listacategoria.Add("Gaseosas");
             listacategoria.Add("Galleta");
@@ -31,6 +32,31 @@ namespace MiPrimer.ViewPage
             //oProductoCLS = new ProductoCLS();
             //oProductoCLS.nombreCategoria = "Gaseosa";
             BindingContext = this;
+        }
+
+        private void btnGuardarProducto_Clicked(object sender, EventArgs e)
+        {
+            Producto obj = Producto.GetInstance();
+            List<ProductoCLS> l = obj.oEnitiesCLS.listaProducto.ToList();
+            if (Title == "Agregar Producto")
+            {
+                //Agregar
+                l.Add(oProductoCLS);
+
+            }
+            else
+            {
+                //Editar
+                int indice = l.FindIndex(p => p.IdProducto == oProductoCLS.IdProducto);
+                l[indice] = oProductoCLS;
+            }
+            obj.oEnitiesCLS.listaProducto = l;
+            Navigation.PopAsync();
+        }
+
+        private void btnRegresarPoducto_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

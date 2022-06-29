@@ -1,18 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MiPrimer.ViewPage.FormProducto">
+             x:Class="MiPrimer.ViewPage.FormProducto"
+             Title="{Binding titulo}">
     <ContentPage.Content>
         
         <StackLayout>
-            <Picker
-                
-                Title="-- Seleccione --"  
+
+            <Label Text="Id Producto" />
+            <Entry Text="{Binding IdProducto}"/>
+            
+            <Label Text="Nombre"/>
+            <Entry Text="{Binding oProductoCLS.nombre}"/>
+
+            <Label Text="Precio"/>
+            <Entry Keyboard="Numeric" Text="{Binding oProductoCLS.precio}"/>
+            
+            <Label Text="Categoria"/>
+            
+            <Picker Title="-- Seleccione --"  
                 ItemsSource="{Binding listacategoria}"    
                 SelectedItem="{Binding oProductoCLS.nombreCategoria}"                             
                 />
+
+            <Label Text="Stock"/>
+            <Entry Keyboard="Numeric" Text="{Binding oProductoCLS.stock}"/>
             
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="Guardar" TextColor="White" x:Name="btnGuardarProducto" Clicked="btnGuardarProducto_Clicked" BackgroundColor="Green" />
+                <Button Text="Regresar" TextColor="White" x:Name="btnRegresarPoducto" Clicked="btnRegresarPoducto_Clicked" Background="red" />
+            </StackLayout>
+
         </StackLayout>
-        
+      
+
     </ContentPage.Content>
 </ContentPage>

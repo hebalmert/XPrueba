@@ -20,16 +20,36 @@ namespace MiPrimer.ViewPage
 
         //propiedad privada para poder hacer el filtrado
         private List<ProductoCLS> lista;
+
+        //implementar paton Singlenton
+        public static Producto instance;
+
+        //Creamos un metodo que nos devuelva la Instancia
+        public static Producto GetInstance()
+        {
+            if (instance == null)
+            {
+                return new Producto();
+            }
+            else
+            {
+                return instance;
+            }
+        }
+
         public Producto()
         {
             InitializeComponent();
+
+            instance = this;
+
             oEnitiesCLS = new EnitiesCLS();
             oEnitiesCLS.listaProducto = new List<ProductoCLS>();
 
-            oEnitiesCLS.listaProducto.Add(new ProductoCLS{ nombre="Inka Cola", precio= 8.5, stock= 20 , nombreCategoria="Gaseosa"});
-            oEnitiesCLS.listaProducto.Add(new ProductoCLS { nombre = "Coca Cola", precio = 7.3, stock = 11, nombreCategoria = "Gaseosa" });
-            oEnitiesCLS.listaProducto.Add(new ProductoCLS { nombre = "Soda", precio = 1.3, stock = 35, nombreCategoria = "Galletas" });
-            oEnitiesCLS.listaProducto.Add(new ProductoCLS { nombre = "Galleta de Agua", precio = 1, stock = 8, nombreCategoria = "Gaseosa" });
+            oEnitiesCLS.listaProducto.Add(new ProductoCLS{ IdProducto=0, nombre="Inka Cola", precio= 8.5, stock= 20 , nombreCategoria="Gaseosa"});
+            oEnitiesCLS.listaProducto.Add(new ProductoCLS { IdProducto = 1, nombre = "Coca Cola", precio = 7.3, stock = 11, nombreCategoria = "Gaseosa" });
+            oEnitiesCLS.listaProducto.Add(new ProductoCLS { IdProducto = 2, nombre = "Soda", precio = 1.3, stock = 35, nombreCategoria = "Galletas" });
+            oEnitiesCLS.listaProducto.Add(new ProductoCLS { IdProducto = 3, nombre = "Galleta de Agua", precio = 1, stock = 8, nombreCategoria = "Gaseosa" });
 
             BindingContext = this;
 

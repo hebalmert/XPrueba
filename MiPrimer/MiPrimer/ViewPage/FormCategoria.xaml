@@ -13,8 +13,8 @@
             <Label Text="Descripcion" />
             <Editor Text="{Binding descripcion}" HeightRequest="100"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button Text="Guardar" x:Name="btnGuardarCategoria" BackgroundColor="Green" Clicked="btnGuardarCategoria_Clicked" />
-                <Button Text="Guardar" x:Name="btnRegresarCategoria" Background="red" Clicked="btnRegresarCategoria_Clicked" />
+                <Button Text="Guardar" HeightRequest="35" TextColor="White" x:Name="btnGuardarCategoria" BackgroundColor="Green" Clicked="btnGuardarCategoria_Clicked" />
+                <Button Text="Regresar" HeightRequest="35" TextColor="White" x:Name="btnRegresarCategoria" Background="red" Clicked="btnRegresarCategoria_Clicked" />
             </StackLayout>
 
         </StackLayout>

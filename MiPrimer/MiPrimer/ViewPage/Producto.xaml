@@ -42,7 +42,7 @@
                                     <Label HorizontalOptions="Center" 
                                    Text="{Binding stock, StringFormat='Stock: {0}'}" Grid.Column="1" Grid.Row="1"/>
                                     <Label HorizontalOptions="Center" 
-                                   Text="{Binding nombreCategoria, StringFormat='Center: {0}'}" Grid.Column="2" Grid.Row="1"/>
+                                   Text="{Binding nombreCategoria, StringFormat='Categoria: {0}'}" Grid.Column="2" Grid.Row="1"/>
                                 </Grid>
 
                             </ViewCell>
