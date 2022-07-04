@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding oCategoriaCLS}">
             <Label Text="Id Categoria" />
-            <Entry Text="{Binding IdCategory}"/>
+            <Entry Text="{Binding iidcategoria}"/>
             <Label Text="Nombre" />
             <Entry Text="{Binding nombre}"/>
             <Label Text="Descripcion" />

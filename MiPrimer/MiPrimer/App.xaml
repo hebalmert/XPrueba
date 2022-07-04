@@ -4,5 +4,8 @@
              x:Class="MiPrimer.App">
     <Application.Resources>
 
+        <!-- Parameters -->
+        <x:String x:Key="UrlAPI">http://xapi.linkonext.com</x:String>
+        
     </Application.Resources>
 </Application>

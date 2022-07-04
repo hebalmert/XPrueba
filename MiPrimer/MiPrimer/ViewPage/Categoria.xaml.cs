@@ -1,10 +1,12 @@
 ﻿using MiPrimer.Clases;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +21,7 @@ namespace MiPrimer.ViewPage
 
         public List<CategoriaCLS> lista;
 
-        //implementar paton Singlenton
+        //implementar patron Singlenton
         public static Categoria instance;
 
         //Creamos un metodo que nos devuelva la Instancia
@@ -43,17 +45,30 @@ namespace MiPrimer.ViewPage
             InitializeComponent();
             oEntitiesCLS = new EnitiesCLS();
             oEntitiesCLS.listaCategoria = new List<CategoriaCLS>();
-            oEntitiesCLS.listaCategoria.Add(new CategoriaCLS { IdCategory = 1, 
-                nombre="Gaseossa", 
-                descripcion="Para todos los gustos de y sabores"});
-            oEntitiesCLS.listaCategoria.Add(new CategoriaCLS { IdCategory = 2,
-                nombre = "Galletas", 
-                descripcion = "Hechas con mucha harina y para grandes y chicos" });
+
+
+            //Cargamos de manera manual las categorias
+            //oEntitiesCLS.listaCategoria.Add(new CategoriaCLS
+            //{
+            //    iidcategoria = 1,
+            //    nombre = "Gaseossa",
+            //    descripcion = "Para todos los gustos de y sabores"
+            //});
+            //oEntitiesCLS.listaCategoria.Add(new CategoriaCLS
+            //{
+            //    iidcategoria = 2,
+            //    nombre = "Galletas",
+            //    descripcion = "Hechas con mucha harina y para grandes y chicos"
+            //});
+            //..fin
 
             //Mantiene toda la data
             lista = oEntitiesCLS.listaCategoria;
             // Para que el codigo Xaml conozca el valor de la propiedas listacategoria
+            
             BindingContext = this;
+
+            listarCategorias();
         }
 
         private void lstCategoria_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -75,7 +90,7 @@ namespace MiPrimer.ViewPage
             //ahora en una variable podemos el objeto completo para manejarlo
             CategoriaCLS oCategoria = (CategoriaCLS)oMenuItem.BindingContext;
             oEntitiesCLS.listaCategoria = oEntitiesCLS.listaCategoria
-                .Where(c => c.IdCategory != oCategoria.IdCategory).ToList();
+                .Where(c => c.iidcategoria != oCategoria.iidcategoria).ToList();
             DisplayAlert("Aviso", oCategoria.nombre, "Aceptar");
         }
 
@@ -90,10 +105,43 @@ namespace MiPrimer.ViewPage
             {
                 oEntitiesCLS.listaCategoria = lista.Where(p => p.nombre.Contains(valor)).ToList();
             }
-
-
-
             //DisplayAlert("Tipeado", valor , "Aceptar");
+        }
+
+        private async void listarCategorias()
+        {
+            try
+            {
+                //Con esto Verificamo si tenemos Internet
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "No hay Acceso a Internet", "Aceptar");
+                    return;
+                }
+                string urlBase = App.Current.Resources["UrlAPI"].ToString();
+                HttpClient client = new HttpClient()
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+                string servicePrefix = "/api";
+                string controller = "/Categoria";
+
+                //Cargamos el Prefijo y el Controlador del API de Internet
+                string url = $"{servicePrefix}{controller}";
+                var rpta = await client.GetAsync(url);
+                if (!rpta.IsSuccessStatusCode) oEntitiesCLS.listaCategoria = new List<CategoriaCLS>();
+                else
+                {
+                    var result = await rpta.Content.ReadAsStringAsync();
+                    List<CategoriaCLS> l = JsonConvert.DeserializeObject<List<CategoriaCLS>>(result);
+                    oEntitiesCLS.listaCategoria = l;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                var problema = ex;
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ namespace MiPrimer.ViewPage
             else
             {
                 //Editar
-                int indice = l.FindIndex(p => p.IdCategory == oCategoriaCLS.IdCategory);
+                int indice = l.FindIndex(p => p.iidcategoria == oCategoriaCLS.iidcategoria);
                 l[indice] = oCategoriaCLS;
             }
             obj.oEntitiesCLS.listaCategoria = l;

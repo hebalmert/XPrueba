@@ -6,7 +6,7 @@ namespace MiPrimer.Clases
 {
     public class CategoriaCLS
     {
-        public int IdCategory { get; set; }
+        public int iidcategoria { get; set; }
 
         public string nombre { get; set; }
 
