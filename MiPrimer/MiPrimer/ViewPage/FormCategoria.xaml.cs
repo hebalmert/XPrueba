@@ -1,7 +1,9 @@
 ﻿using MiPrimer.Clases;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,24 +28,51 @@ namespace MiPrimer.ViewPage
             BindingContext = this;
         }
 
-        private void btnGuardarCategoria_Clicked(object sender, EventArgs e)
+        private async void btnGuardarCategoria_Clicked(object sender, EventArgs e)
         {
             Categoria obj = Categoria.GetInstance();
             List<CategoriaCLS> l = obj.oEntitiesCLS.listaCategoria.ToList();
-            if (Title == "Nueva Categoria")
+
+            string servicePrefix = "/api";
+            string controller = "/Categoria/";
+
+            string url = $"{servicePrefix}{controller}";
+            string urlBase = App.Current.Resources["UrlAPI"].ToString();
+
+            HttpClient cliente = new HttpClient()
             {
-                //Agregar
-                l.Add(oCategoriaCLS);
-               
+                BaseAddress = new Uri(urlBase)
+            };
+
+            int rpta = await Helpers.Generic.guardarGeneric<CategoriaCLS>(urlBase, url, oCategoriaCLS);
+
+            if (rpta == 0)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Error al Crear o Modificar el Registro", "Aceptar");
+                return;
             }
             else
             {
-                //Editar
-                int indice = l.FindIndex(p => p.iidcategoria == oCategoriaCLS.iidcategoria);
-                l[indice] = oCategoriaCLS;
+                obj.listarCategorias();
+                await Navigation.PopAsync();
             }
-            obj.oEntitiesCLS.listaCategoria = l;
-            Navigation.PopAsync();
+            return;
+
+
+            //if (Title == "Nueva Categoria")
+            //{
+            //    //Agregar
+            //    l.Add(oCategoriaCLS);
+
+            //}
+            //else
+            //{
+            //    //Editar
+            //    int indice = l.FindIndex(p => p.iidcategoria == oCategoriaCLS.iidcategoria);
+            //    l[indice] = oCategoriaCLS;
+            //}
+            //obj.oEntitiesCLS.listaCategoria = l;
+            //Navigation.PopAsync();
         }
 
         private void btnRegresarCategoria_Clicked(object sender, EventArgs e)
